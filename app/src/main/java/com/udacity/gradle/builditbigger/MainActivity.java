@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -86,9 +85,10 @@ class PJRetriever extends AsyncTask<Activity, Void, String> {
     @Override
     protected void onPostExecute(String joke) {
         super.onPostExecute(joke);
-        Log.d("DEBUG", joke);
-        activityContext.startActivity(
-                new Intent(activityContext, PJDisplayActivity.class)
-                        .putExtra(PJDisplayActivity.JOKE_TAG, joke));
+        if (joke != null) {
+            activityContext.startActivity(
+                    new Intent(activityContext, PJDisplayActivity.class)
+                            .putExtra(PJDisplayActivity.JOKE_TAG, joke));
+        }
     }
 }
