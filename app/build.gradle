@@ -13,6 +13,17 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    productFlavors {
+        flavorDimensions "mode"
+        free {
+            dimension "mode"
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+        paid {
+            dimension "mode"
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -32,7 +43,7 @@ dependencies {
         exclude group: 'com.google.code.findbugs'
     })
     compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.google.android.gms:play-services-ads:11.6.0'
+    freeCompile 'com.google.android.gms:play-services-ads:11.6.0'
     compile project(":PoorJoker")
     compile project(":pjdisplay")
     compile project(path: ':backend', configuration: 'android-endpoints')
