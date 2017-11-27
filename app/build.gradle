@@ -34,5 +34,5 @@ dependencies {
     compile 'com.google.android.gms:play-services-ads:11.6.0'
     compile project(":PoorJoker")
     compile project(":pjdisplay")
-    compile project(":backend")
+    compile project(path: ':backend', configuration: 'android-endpoints')
 }
