@@ -1,6 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -55,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-class PJRetriever extends AsyncTask<Activity, Void, String> {
+class PJRetriever extends AsyncTask<Context, Void, String> {
 
-    private Activity activityContext;
+    private Context activityContext;
     private static MyApi myApiService = null;
 
     @Override
-    protected String doInBackground(Activity... activityContexts) {
+    protected String doInBackground(Context... activityContexts) {
         activityContext = activityContexts[0];
         if (myApiService == null) {
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport()
@@ -88,6 +88,7 @@ class PJRetriever extends AsyncTask<Activity, Void, String> {
         if (joke != null) {
             activityContext.startActivity(
                     new Intent(activityContext, PJDisplayActivity.class)
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             .putExtra(PJDisplayActivity.JOKE_TAG, joke));
         }
     }
