@@ -19,3 +19,7 @@ allprojects {
         google()
     }
 }
+
+task testTask {
+    dependsOn ":backend:appengineRun", ":app:connectedAndroidTest", ":backend:appengineStop"
+}
