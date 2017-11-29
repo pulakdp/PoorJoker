@@ -3,6 +3,8 @@ package com.udacity.gradle.builditbigger;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.pjdisplay.PJDisplayActivity;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -60,7 +62,7 @@ public class PJRetriever extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(final String joke) {
         super.onPostExecute(joke);
         hideProgressBar();
-        startIntent();
+        startIntent(joke);
     }
 
     private void startIntent(String joke) {
